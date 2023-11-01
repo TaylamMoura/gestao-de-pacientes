@@ -6,6 +6,13 @@
         
 '''
 
+#git add nomedoArquivo (mais de um arqu, dá espaço)
+#git commit -m "mensagem, do que fiz"
+#git push
+
+#cd (navegar entre pastas)
+#ls (listar aquivos da pasta)
+
 
 # Criar db e Conectar db
 import sqlite3
