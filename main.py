@@ -7,11 +7,41 @@
 '''
 
 
-# Criar db
+# Criar db e Conectar db
+import sqlite3
 
-# Conectar ao db
+conexao = sqlite3.connect("db/dados.db")
+cursor = conexao.cursor()
 
 # Se as tabelas não existirem crie-as.
 
 
-            
+# criar tabela ventilação mecanica invasiva e nao invasiva.
+
+tabela = """
+CREATE TABLE pacientes(
+id          int             autoincrement   primary key,
+nome        varchar(50)     not null,
+tipo        int             not null,
+email       varchar(50)     not null
+);
+
+CREATE TABLE usuarios_tipos(
+id          int             autoincrement   primary key,
+tipo        varchar(50)     not null,
+);
+
+CREATE TABLE dados_vitais(
+id          int             autoincrement   primary key,
+pressao_arterial        varchar(10)     not null,
+saturacao_O2            int             not null,
+frequencia_cardiaca     int             not null,
+ausculta_pulmonar       varchar(50)     not null
+);
+
+CREATE TABLE ventilacao_mecanica_invasiva(
+id          int             autoincrement   primary key,
+modo
+)
+
+"""
