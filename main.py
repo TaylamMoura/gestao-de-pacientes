@@ -25,20 +25,20 @@ cursor = conexao.cursor()
 
 # criar tabela ventilação mecanica invasiva e nao invasiva.
 
-tabela =
-CREATE TABLE pacientes(
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS pacientes(
 id          int             autoincrement   primary key,
 nome        varchar(50)     not null,
 tipo        int             not null,
 email       varchar(50)     not null
 );
 
-CREATE TABLE usuarios_tipos(
+CREATE TABLE IF NOT EXISTS usuarios_tipos(
 id          int             autoincrement   primary key,
 tipo        varchar(50)     not null,
 );
 
-CREATE TABLE dados_vitais(
+CREATE TABLE IF NOT EXISTS dados_vitais(
 id          int             autoincrement   primary key,
 pressao_arterial        varchar(10)     not null,
 saturacao_O2            int             not null,
@@ -46,7 +46,7 @@ frequencia_cardiaca     int             not null,
 ausculta_pulmonar       varchar(50)     not null
 );
 
-CREATE TABLE ventilacao_mecanica_invasiva(
+CREATE TABLE IF NOT EXISTS ventilacao_mecanica_invasiva(
 id          int             autoincrement   primary key,
 modo_respiratorio     varchar(20)     not null,
 fiO2                        float     not null,
@@ -59,13 +59,18 @@ tempo_expiratorio           float      null,
 relacao_ie                  float      null,
 );
 
-CREATE TABLE ventilacao_nao_invasiva(
+CREATE TABLE IF NOT EXISTS ventilacao_nao_invasiva(
 id                  int         autoincrement       primary key,
 bipap               varchar(3)       null,
 cpap                varchar(3)       null,
 ipap                float       null,,
 epap                float       null,
 presao_suporte      float       null,
-);
+)
+""")
 #bipap e cpap está como varchar, porque o usuario vai indicar qual deles o paciente faz uso
 # responde com sim ou não.
+
+cursor.commit()
+
+cursor.close()
