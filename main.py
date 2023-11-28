@@ -16,6 +16,12 @@
 
 # Criar db e Conectar db
 import sqlite3
+<<<<<<< HEAD
+=======
+
+conexao = sqlite3.connect("db/dados.db")
+cursor = conexao.cursor()
+>>>>>>> upstream/main
 
 # Se as tabelas não existirem crie-as.
 criar_tabelas_query_lista = [
@@ -72,6 +78,7 @@ criar_tabelas_query_lista = [
 # responde com sim ou não.
 
 
+<<<<<<< HEAD
 def  conectar_banco_de_dados():
     '''
         Cria a conexão e o cursor do banco de dados
@@ -114,3 +121,56 @@ def criar_tabelas(conectar, query):
 for q in criar_tabelas_query_lista:
     criar_tabelas(conectar_banco_de_dados, q)
   
+=======
+# criar tabela ventilação mecanica invasiva e nao invasiva.
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS pacientes(
+id          int             autoincrement   primary key,
+nome        varchar(50)     not null,
+tipo        int             not null,
+email       varchar(50)     not null
+);
+
+CREATE TABLE IF NOT EXISTS usuarios_tipos(
+id          int             autoincrement   primary key,
+tipo        varchar(50)     not null,
+);
+
+CREATE TABLE IF NOT EXISTS dados_vitais(
+id          int             autoincrement   primary key,
+pressao_arterial        varchar(10)     not null,
+saturacao_O2            int             not null,
+frequencia_cardiaca     int             not null,
+ausculta_pulmonar       varchar(50)     not null
+);
+
+CREATE TABLE IF NOT EXISTS ventilacao_mecanica_invasiva(
+id          int             autoincrement   primary key,
+modo_respiratorio     varchar(20)     not null,
+fiO2                        float     not null,
+peep                        float     not null,
+pressao_pico_inspiratoria   float      null,
+pressao_inspiratoria        float      null,
+volume_corrente             float      not null,
+tempo_inspiratorio          float      null,
+tempo_expiratorio           float      null,
+relacao_ie                  float      null,
+);
+
+CREATE TABLE IF NOT EXISTS ventilacao_nao_invasiva(
+id                  int         autoincrement       primary key,
+bipap               varchar(3)       null,
+cpap                varchar(3)       null,
+ipap                float       null,,
+epap                float       null,
+presao_suporte      float       null,
+)
+""")
+#bipap e cpap está como varchar, porque o usuario vai indicar qual deles o paciente faz uso
+# responde com sim ou não.
+
+cursor.commit()
+
+cursor.close()
+>>>>>>> upstream/main
