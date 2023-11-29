@@ -118,7 +118,3 @@ def criar_tabelas(conectar, query):
 
 for q in criar_tabelas_query_lista:
     criar_tabelas(conectar_banco_de_dados, q)
-  
-cursor.commit()
-
-cursor.close()
