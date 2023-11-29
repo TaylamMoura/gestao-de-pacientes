@@ -16,11 +16,10 @@
 
 # Criar db e Conectar db
 
-<<<<<<< HEAD
+import sqlite3
 
 conexao = sqlite3.connect("db/dados.db")
 cursor = conexao.cursor()
->>>>>>> upstream/main
 
 # Se as tabelas não existirem crie-as.
 criar_tabelas_query_lista = [
@@ -76,7 +75,8 @@ criar_tabelas_query_lista = [
 #bipap e cpap está como varchar, porque o usuario vai indicar qual deles o paciente faz uso
 # responde com sim ou não.
 
-<<<<<<< HEAD
+
+
 def  conectar_banco_de_dados():
     '''
         Cria a conexão e o cursor do banco de dados
@@ -118,8 +118,7 @@ def criar_tabelas(conectar, query):
 
 for q in criar_tabelas_query_lista:
     criar_tabelas(conectar_banco_de_dados, q)
-
+  
 cursor.commit()
 
 cursor.close()
->>>>>>> upstream/main
