@@ -15,6 +15,7 @@
 
 
 # Criar db e Conectar db
+
 import sqlite3
 
 # Se as tabelas não existirem crie-as.
